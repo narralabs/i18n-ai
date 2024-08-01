@@ -1,4 +1,5 @@
 require "openai"
+require_relative "base_client"
 
 module I18nAi
   module Clients

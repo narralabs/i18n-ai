@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    i18n-ai (0.1.0)
+    i18n-ai (0.1.1)
       anthropic
       ruby-openai
 
