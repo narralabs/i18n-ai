@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require "rails/railtie"
 require "digest"
 
-require_relative "clients/open_ai"
-require_relative "clients/anthropic"
+require_relative "clients/open_ai_client"
+require_relative "clients/anthropic_client"
 
 module I18nAi
   class Railtie < Rails::Railtie
@@ -37,10 +39,10 @@ module I18nAi
       private
 
       def configure_client
-        if ENV.fetch("AI_SERVICE") == 'anthropic'
-          I18nAi::Clients::Anthropic.new
+        if ENV.fetch("AI_SERVICE") == "anthropic"
+          I18nAi::Clients::AnthropicClient.new
         else
-          I18nAi::Clients::OpenAi.new
+          I18nAi::Clients::OpenAiClient.new
         end
       end
 

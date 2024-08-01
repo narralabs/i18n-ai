@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require "openai"
 require_relative "base_client"
 
 module I18nAi
   module Clients
-    class OpenAi < BaseClient
+    class OpenAiClient < BaseClient
       def initialize
         @client = OpenAI::Client.new(
           access_token: ENV.fetch("OPENAI_ACCESS_TOKEN"),

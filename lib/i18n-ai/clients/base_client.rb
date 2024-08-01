@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module I18nAi
   module Clients
     class BaseClient

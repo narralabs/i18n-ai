@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 require "anthropic"
 require_relative "base_client"
 
 module I18nAi
   module Clients
-    class Anthropic < BaseClient
+    class AnthropicClient < BaseClient
       def initialize
         @client = Anthropic::Client.new(
-          api_key: ENV.fetch("ANTHROPIC_API_KEY")
+          access_token: ENV.fetch("ANTHROPIC_API_KEY")
         )
       end
 
