@@ -14,9 +14,24 @@ gem "i18n-ai"
 
 And do `bundle install`.
 
-## Usage
+## Configuration
 
-First you need to set the environment variable `ENV["OPENAI_ACCESS_TOKEN"]`.
+To use I18nAi, you need to set the appropriate environment variables based on the AI service you wish to use.
+
+### OpenAi
+
+If you are using OpenAI, set `ENV["OPENAI_ACCESS_TOKEN"]`
+
+### Anthropic's Claude
+
+If you prefer to use Anthropic's Claude, set the following environment variables:
+
+```
+  ENV["AI_SERVICE"] = "anthropic"
+  ENV[ANTHROPIC_API_KEY] = "your_anthropic_api_key"
+```
+
+## Usage
 
 To configure and enable other locales, create a file `config/initializers/i18n_ai.rb` and add the following:
 
