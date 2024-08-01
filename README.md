@@ -1,6 +1,6 @@
 # i18n-ai
 
-i18n-ai is a gem that converts your locales into different languages automatically. Uses the `en.yml` file as base by default.
+i18n-ai is a gem that converts your rails locales into different languages automatically. Uses the `en.yml` file as base by default and creates accompanying `es.yml`, `it.yml` and others depending on your configuration.
 
 Currently uses OpenAI (`gpt4o-mini`) to generate the translations but support for other AI models and APIs will be added soon.
 
