@@ -2,14 +2,27 @@ PATH
   remote: .
   specs:
     i18n-ai (0.1.0)
+      ruby-openai
 
 GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
     diff-lcs (1.5.1)
+    event_stream_parser (1.0.0)
+    faraday (2.10.0)
+      faraday-net_http (>= 2.0, < 3.2)
+      logger
+    faraday-multipart (1.0.4)
+      multipart-post (~> 2)
+    faraday-net_http (3.1.1)
+      net-http
     json (2.7.2)
     language_server-protocol (3.17.0.3)
+    logger (1.6.0)
+    multipart-post (2.4.1)
+    net-http (0.4.1)
+      uri
     parallel (1.25.1)
     parser (3.3.4.0)
       ast (~> 2.4.1)
@@ -46,9 +59,14 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.31.3)
       parser (>= 3.3.1.0)
+    ruby-openai (7.1.0)
+      event_stream_parser (>= 0.3.0, < 2.0.0)
+      faraday (>= 1)
+      faraday-multipart (>= 1)
     ruby-progressbar (1.13.0)
     strscan (3.1.0)
     unicode-display_width (2.5.0)
+    uri (0.13.0)
 
 PLATFORMS
   arm64-darwin-23

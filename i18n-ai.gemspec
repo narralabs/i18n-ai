@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/i18n/ai/version"
+require_relative "lib/i18n-ai/version"
 
 Gem::Specification.new do |spec|
   spec.name = "i18n-ai"
-  spec.version = I18n::Ai::VERSION
+  spec.version = I18nAi::VERSION
   spec.authors = ["William Estoque"]
   spec.email = ["william.estoque@gmail.com"]
 
@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem
-  # spec.add_dependency "example-gem", "~> 1.0"
+  spec.add_dependency "ruby-openai"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html

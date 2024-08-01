@@ -1,7 +1,8 @@
 # i18n-ai
 
-i18n-ai is a gem that converts your locales into different languages automatically. Uses the
-en.yml file by default.
+i18n-ai is a gem that converts your locales into different languages automatically. Uses the `en.yml` file as base by default.
+
+Currently uses OpenAI (`gpt4o-mini`) to generate the translations but support for other AI models and APIs will be added soon.
 
 ## Installation
 
@@ -11,8 +12,32 @@ Simply add to your gemfile:
 gem "i18n-ai"
 ```
 
+And do `bundle install`.
+
 ## Usage
 
+First you need to set the environment variable `ENV["OPENAI_ACCESS_TOKEN"]`.
+
+To configure and enable other locales, create a file `config/initializers/i18n_ai.rb` and add the following:
+
+```
+# config/initializers/i18n_ai.rb
+I18nAi.configure do |config|
+  config.generate_locales = [:es, :it] # add your other supported locales to this array
+end
+```
+
+Every page reload, the gem will check if the `en.yml` file changed and if it did, it will automatically generate the configured locale files.
+
+The gem has been setup to generate a `es.yml` file by default.
+
+To disable locale generation simply set the `generate_locales` to an empty array.
+
+```
+I18nAi.configure do |config|
+  config.generate_locales = []
+end
+```
 
 ## Development
 
