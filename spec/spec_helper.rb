@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "i18n/ai"
+require_relative '../lib/i18n-ai'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

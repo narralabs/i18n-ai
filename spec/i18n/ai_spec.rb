@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe I18n::Ai do
+RSpec.describe I18nAi do
   it "has a version number" do
-    expect(I18n::Ai::VERSION).not_to be nil
+    expect(I18nAi::VERSION).not_to be nil
   end
 
   it "does something useful" do
