@@ -10,3 +10,7 @@ Style/StringLiteralsInInterpolation:
 
 Style/Documentation:
   Enabled: false
+
+Naming/FileName:
+  Exclude:
+    - lib/i18n-ai.rb
