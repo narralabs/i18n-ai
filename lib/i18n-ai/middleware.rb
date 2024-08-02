@@ -11,7 +11,7 @@ module I18nAi
       @last_checksum = nil
     end
 
-    def call(env)
+    def call(env) # rubocop:disable Metrics/MethodLength
       locale_file_name = "#{I18nAi.configuration.source_locale}.yml"
       locales_file = Rails.root.join("config", "locales", locale_file_name)
 
@@ -35,21 +35,33 @@ module I18nAi
 
     private
 
-    def generate_translations(locales_file)
+    def generate_translations(locales_file) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
       locales = YAML.load_file(locales_file)
-      text_to_translate = locales.to_yaml
+      text_to_translate = locales.to_yaml.chomp
       generate_locales = I18nAi.configuration.generate_locales
 
       generate_locales.each do |locale|
         # Make a request to OpenAI to translate the locales to the specified locale
+        # rubcop:disable Layout/LineLength
         response = @client.chat(
           parameters: {
             model: "gpt-4o-mini",
-            messages: [{ role: "user",
-                         content: "Translate the following YAML content to #{locale.to_s.upcase} and make sure to retain the keys in english except the first key which is the 2 letter language code:\n\n#{text_to_translate}" }],
+            messages: [
+              {
+                role: "user",
+                content: <<~TEXT
+                  Translate the following YAML content to #{locale.to_s.upcase} and make sure to
+                  retain the keys in english except the first key which is the 2 letter language
+                  code:
+
+                  #{text_to_translate}
+                TEXT
+              }
+            ],
             max_tokens: 5000
           }
         )
+        # rubcop:enable Layout/LineLength
 
         translated_text = response["choices"][0]["message"]["content"]
         match_data = translated_text.match(/```yaml(.*?)```/m)

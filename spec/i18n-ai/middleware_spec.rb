@@ -34,7 +34,9 @@ RSpec.describe I18nAi::Middleware do
           {
             role: "user",
             content: <<~TEXT
-              Translate the following YAML content to ES and make sure to retain the keys in english except the first key which is the 2 letter language code:
+              Translate the following YAML content to ES and make sure to
+              retain the keys in english except the first key which is the 2 letter language
+              code:
 
               ---
               en:
@@ -69,7 +71,9 @@ RSpec.describe I18nAi::Middleware do
         allow(OpenAI::Client).to receive(:new).and_return(openai_client)
 
         expected_parameters[:messages][0][:content] = <<~TEXT
-          Translate the following YAML content to ES and make sure to retain the keys in english except the first key which is the 2 letter language code:
+          Translate the following YAML content to ES and make sure to
+          retain the keys in english except the first key which is the 2 letter language
+          code:
 
           ---
           da:
