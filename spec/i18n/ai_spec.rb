@@ -8,4 +8,9 @@ RSpec.describe I18n::Ai do
   it "does something useful" do
     expect(true).to eq(true)
   end
+
+  it "translates text to a different language" do
+    result = I18n::Ai.translate('Hello', 'es')
+    expect(result).to eq('Hola')
+  end
 end
