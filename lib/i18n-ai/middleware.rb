@@ -4,46 +4,50 @@ module I18nAi
   class Middleware
     def initialize(app)
       @app = app
-      @client = OpenAI::Client.new(
-        access_token: I18nAi.configuration.openai_api_key,
-        log_errors: true
-      )
+      @client = build_openai_client
       @last_checksum = nil
     end
 
-    def call(env) # rubocop:disable Metrics/MethodLength
-      locale_file_name = "#{I18nAi.configuration.source_locale}.yml"
-      locales_file = Rails.root.join("config", "locales", locale_file_name)
-
-      if File.exist?(locales_file)
-        current_checksum = calculate_checksum(locales_file)
-        puts "==> #{locale_file_name} checksum: #{current_checksum}"
-        first_load = @last_checksum.nil?
-        file_changed = current_checksum != @last_checksum
-        puts "==> #{locale_file_name} generate: #{first_load || file_changed}"
-
-        if first_load || file_changed
-          @last_checksum = current_checksum
-          generate_translations(locales_file)
-        end
-      else
-        puts "en.yml file not found"
-      end
-
+    def call(env)
+      translate_locale_files
       @app.call(env)
     end
 
     private
 
-    def generate_translations(locales_file) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
-      locales = YAML.load_file(locales_file)
-      text_to_translate = locales.to_yaml.chomp
-      generate_locales = I18nAi.configuration.generate_locales
+    attr_reader :last_checksum, :client
 
-      generate_locales.each do |locale|
+    def build_openai_client
+      OpenAI::Client.new \
+        access_token: I18nAi.configuration.openai_api_key,
+        log_errors: true
+    end
+
+    def translate_locale_files
+      return unless File.exist? locales_file
+
+      file_changed = checksum(locales_file) != last_checksum
+      return unless file_changed
+
+      @last_checksum = checksum(locales_file)
+      generate_translations(locales_file)
+    end
+
+    def locale_file_name
+      "#{I18nAi.configuration.source_locale}.yml"
+    end
+
+    def locales_file
+      Rails.root.join("config", "locales", locale_file_name)
+    end
+
+    def generate_translations(locales_file) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+      text_to_translate = YAML.load_file(locales_file).to_yaml.chomp
+
+      I18nAi.configuration.generate_locales.each do |locale|
         # Make a request to OpenAI to translate the locales to the specified locale
         # rubcop:disable Layout/LineLength
-        response = @client.chat(
+        response = client.chat(
           parameters: {
             model: "gpt-4o-mini",
             messages: [
@@ -73,7 +77,7 @@ module I18nAi
       end
     end
 
-    def calculate_checksum(file_path)
+    def checksum(file_path)
       Digest::SHA256.file(file_path).hexdigest
     end
   end

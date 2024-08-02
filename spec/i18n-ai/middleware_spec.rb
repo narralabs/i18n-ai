@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe I18nAi::Middleware do
+RSpec.describe I18nAi::Middleware do # rubocop:disable Metrics/BlockLength
   subject(:instance) { described_class.new app }
 
   let(:rails_app_dir) { Pathname.new File.expand_path("../fixtures/app", __dir__) }
@@ -23,7 +23,7 @@ RSpec.describe I18nAi::Middleware do
     es_yml.delete if es_yml.exist?
   end
 
-  describe "#call" do
+  describe "#call" do # rubocop:disable Metrics/BlockLength
     subject(:call) { instance.call app }
 
     let(:app) { double("app", call: nil) }
