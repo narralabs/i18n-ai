@@ -42,9 +42,9 @@ module I18nAi
         config = I18nAi.configuration.ai_settings
         case config[:provider]
         when "anthropic"
-          I18nAi::Clients::Anthropic.new
+          I18nAi::Clients::AnthropicClient.new
         when "openai"
-          I18nAi::Clients::OpenAi.new
+          I18nAi::Clients::OpenAiClient.new
         else
           raise "Unknown AI provider: #{config[:provider]}"
         end
