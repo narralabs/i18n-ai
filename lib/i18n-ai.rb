@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "i18n-ai/version"
 require_relative "i18n-ai/railtie"
 require_relative "i18n-ai/configuration"

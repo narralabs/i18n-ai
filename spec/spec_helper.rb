@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
-require "i18n/ai"
+require "dotenv/load"
+require "active_support/all"
+require_relative "../lib/i18n-ai"
+
+# Require all files from ./support
+Dir[File.join(__dir__, "support", "**", "*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -12,4 +17,7 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  # Allow using fit, fdescribe, focontext, and the :focus flag
+  config.filter_run_when_matching :focus
 end
