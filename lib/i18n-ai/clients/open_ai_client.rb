@@ -6,9 +6,8 @@ require_relative "base_client"
 module I18nAi
   module Clients
     class OpenAiClient < BaseClient
-      def initialize(config)
+      def initialize
         super()
-        @config = config
         @client = OpenAI::Client.new(
           access_token: @config[:access_token],
           log_errors: true
