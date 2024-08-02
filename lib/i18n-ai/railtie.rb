@@ -61,6 +61,8 @@ module I18nAi
             locale, text_to_translate
           )
 
+          next unless response
+
           match_data = response.match(/```yaml(.*?)```/m)
           str = match_data ? match_data[1].strip : nil
 

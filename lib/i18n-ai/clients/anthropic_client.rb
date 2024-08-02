@@ -37,7 +37,6 @@ module I18nAi
       end
 
       def handle_error(error)
-        # Log the error or handle it as needed
         puts "Error: #{error.message}"
         nil
       end
