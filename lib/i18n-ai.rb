@@ -8,14 +8,13 @@ module I18nAi
   class Error < StandardError; end
 
   class << self
-    attr_writer :configuration
+    attr_accessor :configuration
+  end
+  def self.configuration
+    @configuration ||= Configuration.new
+  end
 
-    def configuration
-      @configuration ||= Configuration.new
-    end
-
-    def configure
-      yield(configuration)
-    end
+  def self.configure
+    yield(configuration)
   end
 end

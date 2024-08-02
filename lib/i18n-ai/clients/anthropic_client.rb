@@ -7,15 +7,16 @@ module I18nAi
   module Clients
     class AnthropicClient < BaseClient
       def initialize
+        super
         @client = Anthropic::Client.new(
-          access_token: ENV.fetch("ANTHROPIC_API_KEY")
+          access_token: @config[:access_token]
         )
       end
 
       def chat(locale, text)
         response = @client.messages(
           parameters: {
-            model: "claude-3-haiku-20240307",
+            model: @config[:model],
             messages: [
               { "role": "user", "content": content(locale, text) }
             ]

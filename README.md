@@ -38,7 +38,22 @@ To configure and enable other locales, create a file `config/initializers/i18n_a
 ```
 # config/initializers/i18n_ai.rb
 I18nAi.configure do |config|
+  config.ai_settings = {
+    provider: "openai",
+    model: "gpt-4o-mini",
+    access_token: ENV["OPENAI_ACCESS_TOKEN"]
+  }
   config.generate_locales = [:es, :it] # add your other supported locales to this array
+end
+
+# this would allow us to then use anthropic
+I18nAi.configure do |config|
+  config.ai_settings = {
+    provider: "anthropic",
+    model: "claude-3-haiku-20240307",
+    access_token: ENV["ANTHROPIC_ACCESS_TOKEN"]
+  }
+  config.generate_locales = [:es]
 end
 ```
 

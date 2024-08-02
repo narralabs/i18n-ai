@@ -39,10 +39,14 @@ module I18nAi
       private
 
       def configure_client
-        if ENV.fetch("AI_SERVICE") == "anthropic"
-          I18nAi::Clients::AnthropicClient.new
+        config = I18nAi.configuration.ai_settings
+        case config[:provider]
+        when "anthropic"
+          I18nAi::Clients::Anthropic.new
+        when "openai"
+          I18nAi::Clients::OpenAi.new
         else
-          I18nAi::Clients::OpenAiClient.new
+          raise "Unknown AI provider: #{config[:provider]}"
         end
       end
 

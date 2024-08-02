@@ -8,7 +8,7 @@ module I18nAi
     class OpenAiClient < BaseClient
       def initialize
         @client = OpenAI::Client.new(
-          access_token: ENV.fetch("OPENAI_ACCESS_TOKEN"),
+          access_token: @config[:access_token],
           log_errors: true
         )
       end
@@ -16,7 +16,7 @@ module I18nAi
       def chat(locale, text)
         response = @client.chat(
           parameters: {
-            model: "gpt-4o-mini",
+            model: @config[:model],
             messages: [{ role: "user", content: content(locale, text) }],
             max_tokens: 5000
           }
