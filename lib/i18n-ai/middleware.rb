@@ -12,14 +12,15 @@ module I18nAi
     end
 
     def call(env)
-      locales_file = Rails.root.join("config", "locales", "en.yml")
+      locale_file_name = "#{I18nAi.configuration.source_locale}.yml"
+      locales_file = Rails.root.join("config", "locales", locale_file_name)
 
       if File.exist?(locales_file)
         current_checksum = calculate_checksum(locales_file)
-        puts "==> en.yml checksum: #{current_checksum}"
+        puts "==> #{locale_file_name} checksum: #{current_checksum}"
         first_load = @last_checksum.nil?
         file_changed = current_checksum != @last_checksum
-        puts "==> en.yml generate: #{first_load || file_changed}"
+        puts "==> #{locale_file_name} generate: #{first_load || file_changed}"
 
         if first_load || file_changed
           @last_checksum = current_checksum

@@ -15,6 +15,8 @@ RSpec.describe I18nAi::Middleware do
 
     FileUtils.cp en_backup_yml, en_yml unless en_yml.exist?
     es_yml.delete if es_yml.exist?
+
+    I18nAi.configuration.source_locale = :en
   end
 
   after do
@@ -55,6 +57,31 @@ RSpec.describe I18nAi::Middleware do
 
       call
       expect(openai_client).to have_received(:chat).with(parameters: expected_parameters)
+    end
+
+    context "with different source_locale" do
+      before { I18nAi.configuration.source_locale = "da" }
+
+      it { expect { call }.to change { es_yml.exist? }.from(false).to(true) }
+
+      it "calls the openapi client with the right parameters" do
+        openai_client = double
+        allow(OpenAI::Client).to receive(:new).and_return(openai_client)
+
+        expected_parameters[:messages][0][:content] = <<~TEXT
+          Translate the following YAML content to ES and make sure to retain the keys in english except the first key which is the 2 letter language code:
+
+          ---
+          da:
+            a: b
+        TEXT
+
+        openai_response = { "choices" => [{ "message" => { "content" => "some string" } }] }
+        allow(openai_client).to receive(:chat).with(parameters: expected_parameters).and_return openai_response
+
+        call
+        expect(openai_client).to have_received(:chat).with(parameters: expected_parameters)
+      end
     end
 
     context "without a en.yml file" do
