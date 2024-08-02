@@ -90,6 +90,7 @@ GEM
     crass (1.0.6)
     date (3.3.4)
     diff-lcs (1.5.1)
+    dotenv (3.1.2)
     drb (2.2.1)
     erubi (1.13.0)
     event_stream_parser (1.0.0)
@@ -245,6 +246,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport (~> 7.1)
+  dotenv (~> 3.1)
   i18n-ai!
   rails (~> 7.1)
   rake (~> 13.0)

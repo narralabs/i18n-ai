@@ -6,6 +6,8 @@ source "https://rubygems.org"
 gemspec
 
 group :development, :test do
+  gem "activesupport", "~> 7.1"
+  gem "dotenv", "~> 3.1"
   gem "rails", "~> 7.1"
   gem "rake", "~> 13.0"
   gem "rspec", "~> 3.0"
