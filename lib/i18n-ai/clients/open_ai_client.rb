@@ -7,7 +7,7 @@ module I18nAi
   module Clients
     class OpenAiClient < BaseClient
       def initialize
-        super()
+        super
         @client = OpenAI::Client.new(
           access_token: @config[:access_token],
           log_errors: true
@@ -38,7 +38,6 @@ module I18nAi
 
       def handle_error(error)
         puts "Error: #{error.message}"
-        nil
       end
     end
   end

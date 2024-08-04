@@ -7,7 +7,7 @@ module I18nAi
   module Clients
     class AnthropicClient < BaseClient
       def initialize
-        super()
+        super
         @client = Anthropic::Client.new(
           access_token: @config[:access_token]
         )
@@ -38,7 +38,6 @@ module I18nAi
 
       def handle_error(error)
         puts "Error: #{error.message}"
-        nil
       end
     end
   end
