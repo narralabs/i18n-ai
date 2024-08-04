@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "i18n-ai/version"
-require_relative "i18n-ai/railtie"
-require_relative "i18n-ai/configuration"
+require_relative "i18n_ai/version"
+require_relative "i18n_ai/railtie"
+require_relative "i18n_ai/configuration"
 
+# The I18nAi module provides functionality for integrating AI-based translation services
 module I18nAi
   class Error < StandardError; end
 

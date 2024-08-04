@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "lib/i18n-ai/version"
+require_relative "lib/i18n_ai/version"
 
 Gem::Specification.new do |spec|
   spec.name = "i18n-ai"
@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem
+  spec.add_development_dependency "rails", "~> 6.1"
   spec.add_dependency "anthropic"
   spec.add_dependency "ruby-openai"
 

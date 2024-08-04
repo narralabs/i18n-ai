@@ -1,25 +1,26 @@
 # frozen_string_literal: true
 
-require "anthropic"
+require "openai"
 require_relative "base_client"
 
 module I18nAi
   module Clients
-    class AnthropicClient < BaseClient
+    # The AnthropicClient class is responsible for interacting with the OpenAI API
+    class OpenAiClient < BaseClient
       def initialize
         super
-        @client = Anthropic::Client.new(
-          access_token: @config[:access_token]
+        @client = OpenAI::Client.new(
+          access_token: @config[:access_token],
+          log_errors: true
         )
       end
 
       def chat(locale, text)
-        response = @client.messages(
+        response = @client.chat(
           parameters: {
             model: @config[:model],
-            messages: [
-              { role: "user", content: content(locale, text) }
-            ]
+            messages: [{ role: "user", content: content(locale, text) }],
+            max_tokens: 5000
           }
         )
 
@@ -31,7 +32,7 @@ module I18nAi
       private
 
       def parse_response(response)
-        response.dig("content", 0, "text")
+        response.dig("choices", 0, "message", "content")
       rescue TypeError, NoMethodError => e
         handle_error(e)
       end
