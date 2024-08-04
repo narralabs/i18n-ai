@@ -75,7 +75,7 @@ module I18nAi
 
           # Save the response to <locale>.yml
           locales_file = Rails.root.join("config", "locales", "#{locale}.yml")
-          File.write(locales_file, str)
+          File.write(locales_file, yaml_content_with_comment)
         end
       end
 
