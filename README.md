@@ -14,18 +14,46 @@ gem "i18n-ai"
 
 And do `bundle install`.
 
-## Usage
+## Configuration
 
-First you need to set the environment variable `ENV["OPENAI_ACCESS_TOKEN"]`.
+To use I18nAi, you need to set the appropriate environment variables based on the AI service you wish to use.
 
-To configure and enable other locales, create a file `config/initializers/i18n_ai.rb` and add the following:
+### OpenAi
+
+If you are using OpenAI, set `ENV["OPENAI_ACCESS_TOKEN"]`
+
+To configure and enable other locales, create a file `config/initializers/i18n_aii.rb` and add the following:
 
 ```
 # config/initializers/i18n_ai.rb
 I18nAi.configure do |config|
+  config.ai_settings = {
+    provider: "openai",
+    model: "gpt-4o-mini",
+    access_token: ENV["OPENAI_ACCESS_TOKEN"]
+  }
   config.generate_locales = [:es, :it] # add your other supported locales to this array
 end
 ```
+
+### Anthropic's Claude
+
+If you prefer to use Anthropic's Claude, set `ENV[ANTHROPIC_API_KEY]`
+
+To configure and enable other locales, create a file `config/initializers/i18n_ai.rb` and add the following:
+
+```
+I18nAi.configure do |config|
+  config.ai_settings = {
+    provider: "anthropic",
+    model: "claude-3-haiku-20240307",
+    access_token: ENV["ANTHROPIC_ACCESS_TOKEN"]
+  }
+  config.generate_locales = [:es]
+end
+```
+
+## Usage
 
 Every page reload, the gem will check if the `en.yml` file changed and if it did, it will automatically generate the configured locale files.
 

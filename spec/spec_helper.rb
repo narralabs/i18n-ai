@@ -12,4 +12,9 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  config.before(:suite) do
+    ENV["ANTHROPIC_API_KEY"] = "test_anthropic_api_key"
+    ENV["OPENAI_ACCESS_TOKEN"] = "test_openai_access_token"
+  end
 end

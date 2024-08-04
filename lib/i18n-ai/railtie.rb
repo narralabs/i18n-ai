@@ -1,16 +1,17 @@
+# frozen_string_literal: true
+
 require "rails/railtie"
-require "openai"
 require "digest"
+
+require_relative "clients/open_ai_client"
+require_relative "clients/anthropic_client"
 
 module I18nAi
   class Railtie < Rails::Railtie
     class I18nAiMiddleware
       def initialize(app)
         @app = app
-        @client = OpenAI::Client.new(
-          access_token: ENV.fetch("OPENAI_ACCESS_TOKEN"),
-          log_errors: true
-        )
+        @client = configure_client
         @last_checksum = nil
       end
 
@@ -37,6 +38,18 @@ module I18nAi
 
       private
 
+      def configure_client
+        config = I18nAi.configuration.ai_settings
+        case config[:provider]
+        when "anthropic"
+          I18nAi::Clients::AnthropicClient.new
+        when "openai"
+          I18nAi::Clients::OpenAiClient.new
+        else
+          raise "Unknown AI provider: #{config[:provider]}"
+        end
+      end
+
       def generate_translations(locales_file)
         locales = YAML.load_file(locales_file)
         text_to_translate = locales.to_yaml
@@ -45,16 +58,12 @@ module I18nAi
         generate_locales.each do |locale|
           # Make a request to OpenAI to translate the locales to the specified locale
           response = @client.chat(
-            parameters: {
-              model: "gpt-4o-mini",
-              messages: [{ role: "user",
-                           content: "Translate the following YAML content to #{locale.to_s.upcase} and make sure to retain the keys in english except the first key which is the 2 letter language code:\n\n#{text_to_translate}" }],
-              max_tokens: 5000
-            }
+            locale, text_to_translate
           )
 
-          translated_text = response["choices"][0]["message"]["content"]
-          match_data = translated_text.match(/```yaml(.*?)```/m)
+          next unless response
+
+          match_data = response.match(/```yaml(.*?)```/m)
           str = match_data ? match_data[1].strip : nil
 
           # Save the response to <locale>.yml
