@@ -22,18 +22,7 @@ To use I18nAi, you need to set the appropriate environment variables based on th
 
 If you are using OpenAI, set `ENV["OPENAI_ACCESS_TOKEN"]`
 
-### Anthropic's Claude
-
-If you prefer to use Anthropic's Claude, set the following environment variables:
-
-```
-  ENV["AI_SERVICE"] = "anthropic"
-  ENV[ANTHROPIC_API_KEY] = "your_anthropic_api_key"
-```
-
-## Usage
-
-To configure and enable other locales, create a file `config/initializers/i18n_ai.rb` and add the following:
+To configure and enable other locales, create a file `config/initializers/i18n_aii.rb` and add the following:
 
 ```
 # config/initializers/i18n_ai.rb
@@ -45,8 +34,15 @@ I18nAi.configure do |config|
   }
   config.generate_locales = [:es, :it] # add your other supported locales to this array
 end
+```
 
-# this would allow us to then use anthropic
+### Anthropic's Claude
+
+If you prefer to use Anthropic's Claude, set `ENV[ANTHROPIC_API_KEY]`
+
+To configure and enable other locales, create a file `config/initializers/i18n_ai.rb` and add the following:
+
+```
 I18nAi.configure do |config|
   config.ai_settings = {
     provider: "anthropic",
@@ -56,6 +52,8 @@ I18nAi.configure do |config|
   config.generate_locales = [:es]
 end
 ```
+
+## Usage
 
 Every page reload, the gem will check if the `en.yml` file changed and if it did, it will automatically generate the configured locale files.
 
