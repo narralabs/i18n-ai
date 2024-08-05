@@ -14,3 +14,7 @@ Metrics/BlockLength:
 Layout/LineLength:
   Exclude:
     - 'spec/**/*_spec.rb'
+
+Naming/FileName:
+  Exclude:
+    - 'lib/i18n-ai.rb'
