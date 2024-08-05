@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "../../lib/i18n-ai/clients/base_client"
-
 RSpec.describe I18nAi::Clients::BaseClient do
   describe "#content" do
     it "generates the correct content string" do
