@@ -5,6 +5,7 @@ require "digest"
 
 require_relative "clients/open_ai_client"
 require_relative "clients/anthropic_client"
+require_relative "clients/local_client"
 
 module I18nAi
   # The Railtie class provides a way to integrate I18nAi into an application
@@ -58,7 +59,7 @@ module I18nAi
       end
 
       def log_generate_status(first_load, file_changed)
-        puts "==> en.yml generate: #{first_load || file_changed}"
+        puts "==> en.yml generate CHANGED: #{first_load || file_changed}"
       end
 
       def log_file_not_found
@@ -72,6 +73,8 @@ module I18nAi
           I18nAi::Clients::AnthropicClient.new
         when "openai"
           I18nAi::Clients::OpenAiClient.new
+        when "local"
+          I18nAi::Clients::LocalClient.new
         else
           raise "Unknown AI provider: #{config[:provider]}"
         end
@@ -100,8 +103,13 @@ module I18nAi
       end
 
       def extract_translated_content(response)
-        match_data = response.match(/```yaml(.*?)```/m)
-        match_data ? match_data[1].strip : nil
+        config = I18nAi.configuration.ai_settings
+        if config[:provider] == 'local'
+          match_data = response
+        else
+          match_data = response.match(/```yaml(.*?)```/m)
+          match_data  ? match_data[1].strip : nil
+        end
       end
 
       def save_translated_locales(locale, translated_content)
