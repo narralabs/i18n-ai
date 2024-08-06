@@ -53,6 +53,23 @@ I18nAi.configure do |config|
 end
 ```
 
+### Local
+
+If you prefer to use local AI models.
+
+To configure and enable other locales, create a file `config/initializers/i18n_ai.rb` and add the following:
+
+```
+I18nAi.configure do |config|
+  config.ai_settings = {
+    provider: "local",
+    model: "mistral",
+    url: "http://localhost:11434/api/generate"
+  }
+  config.generate_locales = [:es]
+end
+```
+
 ## Usage
 
 Every page reload, the gem will check if the `en.yml` file changed and if it did, it will automatically generate the configured locale files.
@@ -69,7 +86,9 @@ end
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+If you are working on the gem itself, after checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+
+
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
