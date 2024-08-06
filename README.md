@@ -64,8 +64,7 @@ I18nAi.configure do |config|
   config.ai_settings = {
     provider: "local",
     model: "mistral",
-    url: "http://localhost:11434/api/generate",
-    method: "POST"
+    url: "http://localhost:11434/api/generate"
   }
   config.generate_locales = [:es]
 end
