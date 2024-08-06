@@ -59,7 +59,7 @@ module I18nAi
       end
 
       def log_generate_status(first_load, file_changed)
-        puts "==> en.yml generate CHANGED: #{first_load || file_changed}"
+        puts "==> en.yml generate: #{first_load || file_changed}"
       end
 
       def log_file_not_found
