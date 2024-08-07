@@ -25,3 +25,7 @@ Metrics/BlockLength:
 
 Style/Documentation:
   Enabled: false
+
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*_spec.rb'
