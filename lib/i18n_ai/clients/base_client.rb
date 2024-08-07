@@ -8,13 +8,26 @@ module I18nAi
         @config = I18nAi.configuration.ai_settings
       end
 
-      def content(locale, text_to_translate)
-        # rubocop:disable Layout/LineLength
-        "Translate the following YAML content to #{locale.to_s.upcase} and make sure to retain the keys in english except the first key which is the 2 letter language code:\n\n#{text_to_translate}"
-        # rubocop:enable Layout/LineLength
+      def translate_content(locale, content)
+        chat_content = chat(locale, content)
+        extract_translated_content(chat_content)
+      end
+
+      private
+
+      def chat(locale, text)
+        raise NotImplementedError, "Subclasses must implement this method"
+      end
+
+      def chat_prompt(locale, text_to_translate)
+        raise NotImplementedError, "Subclasses must implement this method"
       end
 
       def parse_response(response)
+        raise NotImplementedError, "Subclasses must implement this method"
+      end
+
+      def extract_translated_content
         raise NotImplementedError, "Subclasses must implement this method"
       end
     end

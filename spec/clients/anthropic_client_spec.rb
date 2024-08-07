@@ -31,7 +31,7 @@ module I18nAi
             parameters: {
               model: config[:model],
               messages: [
-                { role: "user", content: client.send(:content, locale, text) }
+                { role: "user", content: client.send(:chat_prompt, locale, text) }
               ]
             }
           )

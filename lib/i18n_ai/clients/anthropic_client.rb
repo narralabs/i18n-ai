@@ -18,7 +18,7 @@ module I18nAi
         response = @client.messages(
           parameters: {
             model: @config[:model],
-            messages: [{ role: "user", content: content(locale, text) }]
+            messages: [{ role: "user", content: chat_prompt(locale, text) }]
           }
         )
 
@@ -29,6 +29,12 @@ module I18nAi
 
       private
 
+      def chat_prompt(locale, text_to_translate)
+        # rubocop:disable Layout/LineLength
+        "Translate the following YAML content to #{locale.to_s.upcase} and make sure to retain the keys in english except the first key which is the 2 letter language code:\n\n#{text_to_translate}"
+        # rubocop:enable Layout/LineLength
+      end
+
       def parse_response(response)
         response.dig("content", 0, "text")
       rescue TypeError, NoMethodError => e
@@ -37,6 +43,11 @@ module I18nAi
 
       def handle_error(error)
         puts "Error: #{error.message}"
+      end
+
+      def extract_translated_content(chat_content)
+        match_data = response.match(/```yaml(.*?)```/m)
+        match_data ? match_data[1].strip : nil
       end
     end
   end

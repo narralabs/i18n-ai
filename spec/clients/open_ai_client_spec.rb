@@ -30,7 +30,7 @@ module I18nAi
           expect_any_instance_of(OpenAI::Client).to receive(:chat).with(
             parameters: {
               model: config[:model],
-              messages: [{ role: "user", content: client.send(:content, locale, text) }],
+              messages: [{ role: "user", content: client.send(:chat_prompt, locale, text) }],
               max_tokens: 5000
             }
           )

@@ -9,6 +9,17 @@ RSpec.configure do |config|
   # Disable RSpec exposing methods globally on `Module` and `main`
   config.disable_monkey_patching!
 
+  config.add_setting :file_fixture_path, default: "spec/fixtures/files"
+
+  config.include Module.new {
+    def file_fixture(file_name)
+      path = RSpec.configuration.file_fixture_path
+      file_path = File.join(path, file_name)
+      raise ArgumentError, "the directory '#{path}' does not contain a file named '#{file_name}'" unless File.exist?(file_path)
+      File.new(file_path)
+    end
+  }
+
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
