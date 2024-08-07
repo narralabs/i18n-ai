@@ -29,7 +29,7 @@ module I18nAi
         raise NotImplementedError, "Subclasses must implement this method"
       end
 
-      def extract_translated_content
+      def extract_translated_content(chat_content)
         raise NotImplementedError, "Subclasses must implement this method"
       end
     end
