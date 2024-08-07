@@ -33,8 +33,12 @@ Gem::Specification.new do |spec|
 
   # Uncomment to register a new dependency of your gem
   spec.add_runtime_dependency("railties", ">= 6.0.0", "< 8")
+
   spec.add_dependency "anthropic"
   spec.add_dependency "ruby-openai"
+
+  spec.add_development_dependency "vcr"
+  spec.add_development_dependency "webmock"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html

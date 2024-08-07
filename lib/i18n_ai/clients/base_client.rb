@@ -4,6 +4,8 @@ module I18nAi
   module Clients
     # The BaseClient class serves as a base class for all AI client implementations
     class BaseClient
+      attr_reader :config
+
       def initialize
         @config = I18nAi.configuration.ai_settings
       end

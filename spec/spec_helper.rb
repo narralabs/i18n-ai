@@ -1,6 +1,16 @@
 # frozen_string_literal: true
 
 require "i18n_ai"
+require "vcr"
+
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  config.hook_into :webmock
+  config.filter_sensitive_data("<ACCESS_TOKEN>") do
+    puts "==> FILTER SENSITIVE DATA access_token"
+    I18nAi.configuration.ai_settings[:access_token]
+  end
+end
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -11,21 +21,20 @@ RSpec.configure do |config|
 
   config.add_setting :file_fixture_path, default: "spec/fixtures/files"
 
-  config.include Module.new {
+  config.include(Module.new do
     def file_fixture(file_name)
       path = RSpec.configuration.file_fixture_path
       file_path = File.join(path, file_name)
-      raise ArgumentError, "the directory '#{path}' does not contain a file named '#{file_name}'" unless File.exist?(file_path)
+      unless File.exist?(file_path)
+        raise ArgumentError,
+              "the directory '#{path}' does not contain a file named '#{file_name}'"
+      end
+
       File.new(file_path)
     end
-  }
+  end)
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
-  end
-
-  config.before(:suite) do
-    ENV["ANTHROPIC_API_KEY"] = "test_anthropic_api_key"
-    ENV["OPENAI_ACCESS_TOKEN"] = "test_openai_access_token"
   end
 end
