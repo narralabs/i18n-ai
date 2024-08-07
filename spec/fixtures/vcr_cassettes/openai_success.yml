@@ -9,8 +9,8 @@ http_interactions:
         the following YAML content to the language of the country using the ISO 639
         language code\nof es. Make sure to retain the keys in english except the first
         key which is the 2 letter language code:\n\n\"\"\"\"\nen:\n  good_morning:
-        \"Good Morning\"\"\n\"\"\"\"\n\nReturn only the YAML content without explanation.\n\nExample:\n\n  {{two_letter_locale_abbrev}}:\n    key_1:
-        \"value1\"\n"}],"max_tokens":5000}'
+        \"Good Morning\"\"\n\"\"\"\"\n\nReturn only the YAML content without explanation.\n\nExample
+        Return YAML:\n\n\"\"\"\n{{ISO_639 language code}}:\n  key_1: \"value1\"\n\"\"\"\n"}],"max_tokens":5000}'
     headers:
       Content-Type:
       - application/json
@@ -28,7 +28,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 07 Aug 2024 09:49:54 GMT
+      - Wed, 07 Aug 2024 10:20:17 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -38,7 +38,7 @@ http_interactions:
       Openai-Organization:
       - narra-labs
       Openai-Processing-Ms:
-      - '627'
+      - '1326'
       Openai-Version:
       - '2020-10-01'
       Strict-Transport-Security:
@@ -50,32 +50,55 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '9999'
       X-Ratelimit-Remaining-Tokens:
-      - '194907'
+      - '194903'
       X-Ratelimit-Reset-Requests:
       - 8.64s
       X-Ratelimit-Reset-Tokens:
-      - 1.527s
+      - 1.528s
       X-Request-Id:
-      - req_547f1d3d64233228f8053e143e836249
+      - req_60b52a993f7077f2ea0d922deb3abebd
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=k_rcQHMug7DvFNt60liMCIeFyDqYCLT_3CjN_KTYI_A-1723024194-1.0.1.1-BaYtkSQrbDN8hLTzEijiz8.66oDKvyz9D.XUO9QjEwt9hgAHT.07SGvAzavfNF.rm47l6mpGAY6OWzM.McJujw;
-        path=/; expires=Wed, 07-Aug-24 10:19:54 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=27FTbZ_qhSLnp1zr.pm3prlBwbYtBZ1d1KsCf7Dj_bo-1723026017-1.0.1.1-ZAvJy34jqXVmkQ.SfesUHByg0z3TIW4dghv8na_0opjXCj5yrmPP7TbZVw4caFATdLPCAAT5WyXiqdwd9CzZcw;
+        path=/; expires=Wed, 07-Aug-24 10:50:17 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=uy5zewtAHpd.oVusgUhX2GVLyS2_8vzqn3ytXPqZ3l0-1723024194545-0.0.1.1-604800000;
+      - _cfuvid=4p58RyEmclVcRDxDTADsmYHU4L0wpZ77putvrBKtdFI-1723026017438-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8af65bf9abc285bb-HKG
+      - 8af68875be0585ce-HKG
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        ewogICJpZCI6ICJjaGF0Y21wbC05dFhhazhxdVhJYlE5N0ZFTWNsMTNiU015Vlg5YyIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTcyMzAyNDE5NCwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAiYGBgeWFtbFxuZXM6XG4gIGdvb2RfbW9ybmluZzogXCJCdWVub3MgRMOtYXNcIlxuYGBgIiwKICAgICAgICAicmVmdXNhbCI6IG51bGwKICAgICAgfSwKICAgICAgImxvZ3Byb2JzIjogbnVsbCwKICAgICAgImZpbmlzaF9yZWFzb24iOiAic3RvcCIKICAgIH0KICBdLAogICJ1c2FnZSI6IHsKICAgICJwcm9tcHRfdG9rZW5zIjogOTQsCiAgICAiY29tcGxldGlvbl90b2tlbnMiOiAxNiwKICAgICJ0b3RhbF90b2tlbnMiOiAxMTAKICB9LAogICJzeXN0ZW1fZmluZ2VycHJpbnQiOiAiZnBfNDgxOTZiYzY3YSIKfQo=
-  recorded_at: Wed, 07 Aug 2024 09:49:54 GMT
+      encoding: UTF-8
+      string: |
+        {
+          "id": "chatcmpl-9tY48QF4YliQG3W0U93gDtImBK5eu",
+          "object": "chat.completion",
+          "created": 1723026016,
+          "model": "gpt-4o-mini-2024-07-18",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "```yaml\nes:\n  good_morning: \"Buenos Días\"\n```",
+                "refusal": null
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 97,
+            "completion_tokens": 16,
+            "total_tokens": 113
+          },
+          "system_fingerprint": "fp_48196bc67a"
+        }
+  recorded_at: Wed, 07 Aug 2024 10:20:17 GMT
 recorded_with: VCR 6.2.0

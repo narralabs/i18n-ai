@@ -9,6 +9,10 @@ VCR.configure do |config|
   config.filter_sensitive_data("<ACCESS_TOKEN>") do
     I18nAi.configuration.ai_settings[:access_token]
   end
+  config.before_record do |interaction|
+    interaction.response.body.force_encoding("UTF-8")
+  end
+  config.default_cassette_options = { decode_compressed_response: true }
 end
 
 RSpec.configure do |config|
