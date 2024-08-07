@@ -5,12 +5,11 @@ require_relative "base_client"
 
 module I18nAi
   module Clients
-    # The AnthropicClient class is responsible for interacting with the OpenAI API
     class OpenAiClient < BaseClient
       def initialize
         super
         @client = OpenAI::Client.new(
-          access_token: @config[:access_token],
+          access_token: config[:access_token],
           log_errors: true
         )
       end
@@ -19,14 +18,11 @@ module I18nAi
         response = @client.chat(
           parameters: {
             model: @config[:model],
-            messages: [{ role: "user", content: content(locale, text) }],
-            max_tokens: 5000
+            messages: [{ role: "user", content: chat_prompt(locale, text) }],
+            max_tokens: 4096
           }
         )
-
         parse_response(response)
-      rescue StandardError => e
-        handle_error(e)
       end
 
       private
@@ -39,6 +35,11 @@ module I18nAi
 
       def handle_error(error)
         puts "Error: #{error.message}"
+      end
+
+      def extract_translated_content(chat_content)
+        match_data = chat_content.match(/```yaml(.*?)```/m)
+        match_data ? match_data[1].strip : nil
       end
     end
   end
