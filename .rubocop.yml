@@ -18,3 +18,10 @@ Layout/LineLength:
 Naming/FileName:
   Exclude:
     - 'lib/i18n-ai.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'i18n-ai.gemspec'
+
+Style/Documentation:
+  Enabled: false

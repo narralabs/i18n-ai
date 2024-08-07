@@ -1,0 +1,81 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"Translate
+        the following YAML content to the language of the country using the ISO 639
+        language code\nof es. Make sure to retain the keys in english except the first
+        key which is the 2 letter language code:\n\n\"\"\"\"\nen:\n  good_morning:
+        \"Good Morning\"\"\n\"\"\"\"\n\nReturn only the YAML content without explanation.\n\nExample:\n\n  {{two_letter_locale_abbrev}}:\n    key_1:
+        \"value1\"\n"}],"max_tokens":5000}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 07 Aug 2024 09:49:54 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Openai-Organization:
+      - narra-labs
+      Openai-Processing-Ms:
+      - '627'
+      Openai-Version:
+      - '2020-10-01'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      X-Ratelimit-Limit-Requests:
+      - '10000'
+      X-Ratelimit-Limit-Tokens:
+      - '200000'
+      X-Ratelimit-Remaining-Requests:
+      - '9999'
+      X-Ratelimit-Remaining-Tokens:
+      - '194907'
+      X-Ratelimit-Reset-Requests:
+      - 8.64s
+      X-Ratelimit-Reset-Tokens:
+      - 1.527s
+      X-Request-Id:
+      - req_547f1d3d64233228f8053e143e836249
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=k_rcQHMug7DvFNt60liMCIeFyDqYCLT_3CjN_KTYI_A-1723024194-1.0.1.1-BaYtkSQrbDN8hLTzEijiz8.66oDKvyz9D.XUO9QjEwt9hgAHT.07SGvAzavfNF.rm47l6mpGAY6OWzM.McJujw;
+        path=/; expires=Wed, 07-Aug-24 10:19:54 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=uy5zewtAHpd.oVusgUhX2GVLyS2_8vzqn3ytXPqZ3l0-1723024194545-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8af65bf9abc285bb-HKG
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJpZCI6ICJjaGF0Y21wbC05dFhhazhxdVhJYlE5N0ZFTWNsMTNiU015Vlg5YyIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTcyMzAyNDE5NCwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAiYGBgeWFtbFxuZXM6XG4gIGdvb2RfbW9ybmluZzogXCJCdWVub3MgRMOtYXNcIlxuYGBgIiwKICAgICAgICAicmVmdXNhbCI6IG51bGwKICAgICAgfSwKICAgICAgImxvZ3Byb2JzIjogbnVsbCwKICAgICAgImZpbmlzaF9yZWFzb24iOiAic3RvcCIKICAgIH0KICBdLAogICJ1c2FnZSI6IHsKICAgICJwcm9tcHRfdG9rZW5zIjogOTQsCiAgICAiY29tcGxldGlvbl90b2tlbnMiOiAxNiwKICAgICJ0b3RhbF90b2tlbnMiOiAxMTAKICB9LAogICJzeXN0ZW1fZmluZ2VycHJpbnQiOiAiZnBfNDgxOTZiYzY3YSIKfQo=
+  recorded_at: Wed, 07 Aug 2024 09:49:54 GMT
+recorded_with: VCR 6.2.0

@@ -7,7 +7,6 @@ VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :webmock
   config.filter_sensitive_data("<ACCESS_TOKEN>") do
-    puts "==> FILTER SENSITIVE DATA access_token"
     I18nAi.configuration.ai_settings[:access_token]
   end
 end

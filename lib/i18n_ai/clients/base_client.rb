@@ -17,11 +17,25 @@ module I18nAi
 
       private
 
-      def chat(locale, text)
-        raise NotImplementedError, "Subclasses must implement this method"
+      def chat_prompt(locale, text_to_translate)
+        <<~PROMPT
+          Translate the following YAML content to the language of the country using the ISO 639 language code
+          of #{locale}. Make sure to retain the keys in english except the first key which is the 2 letter language code:
+
+          """"
+          #{text_to_translate}"
+          """"
+
+          Return only the YAML content without explanation.
+
+          Example:
+
+            {{two_letter_locale_abbrev}}:
+              key_1: "value1"
+        PROMPT
       end
 
-      def chat_prompt(locale, text_to_translate)
+      def chat(locale, text)
         raise NotImplementedError, "Subclasses must implement this method"
       end
 

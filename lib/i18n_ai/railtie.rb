@@ -86,9 +86,7 @@ module I18nAi
 
         generate_locales.each do |locale|
           translated_content = client.translate_content(locale, text_to_translate)
-          if translated_content
-            save_translated_locales(locale, translated_content)
-          end
+          save_translated_locales(locale, translated_content) if translated_content
         end
       end
 
