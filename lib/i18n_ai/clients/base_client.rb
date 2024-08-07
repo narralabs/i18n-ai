@@ -28,10 +28,12 @@ module I18nAi
 
           Return only the YAML content without explanation.
 
-          Example:
+          Example Return YAML:
 
-            {{two_letter_locale_abbrev}}:
-              key_1: "value1"
+          """
+          {{ISO_639 language code}}:
+            key_1: "value1"
+          """
         PROMPT
       end
 
