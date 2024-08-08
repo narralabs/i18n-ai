@@ -18,16 +18,18 @@ RSpec.describe I18nAi::Clients::OpenAiClient do
           content = file_fixture("en.yml").read
           client = I18nAi::Clients::OpenAiClient.new
 
-          allow_any_instance_of(OpenAI::Client).to receive(:chat).with({
-            parameters: {
-              model: "gpt-4o-mini",
-              messages: [{
-                role: "user",
-                content: client.send(:chat_prompt, :es, content)
-              }],
-              max_tokens: 4096
+          allow_any_instance_of(OpenAI::Client).to receive(:chat).with(
+            {
+              parameters: {
+                model: "gpt-4o-mini",
+                messages: [{
+                  role: "user",
+                  content: client.send(:chat_prompt, :es, content)
+                }],
+                max_tokens: 4096
+              }
             }
-          }).and_call_original
+          ).and_call_original
 
           client.translate_content(:es, content)
         end
@@ -51,16 +53,18 @@ RSpec.describe I18nAi::Clients::OpenAiClient do
           content = file_fixture("en.yml").read
           client = I18nAi::Clients::OpenAiClient.new
 
-          allow_any_instance_of(OpenAI::Client).to receive(:chat).with({
-            parameters: {
-              model: "gpt-4o-mini",
-              messages: [{
-                role: "user",
-                content: client.send(:chat_prompt, :es, content)
-              }],
-              max_tokens: 1000
+          allow_any_instance_of(OpenAI::Client).to receive(:chat).with(
+            {
+              parameters: {
+                model: "gpt-4o-mini",
+                messages: [{
+                  role: "user",
+                  content: client.send(:chat_prompt, :es, content)
+                }],
+                max_tokens: 1000
+              }
             }
-          }).and_call_original
+          ).and_call_original
 
           client.translate_content(:es, content)
         end

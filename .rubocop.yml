@@ -22,6 +22,7 @@ Naming/FileName:
 Metrics/BlockLength:
   Exclude:
     - 'i18n-ai.gemspec'
+    - 'spec/**/*_spec.rb'
 
 Style/Documentation:
   Enabled: false

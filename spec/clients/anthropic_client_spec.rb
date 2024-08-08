@@ -18,16 +18,18 @@ RSpec.describe I18nAi::Clients::AnthropicClient do
           content = file_fixture("en.yml").read
           client = I18nAi::Clients::AnthropicClient.new
 
-          allow_any_instance_of(Anthropic::Client).to receive(:messages).with({
-            parameters: {
-              model: "claude-3-haiku-20240307",
-              messages: [{
-                role: "user",
-                content: client.send(:chat_prompt, :es, content)
-              }],
-              max_tokens: 4096
+          allow_any_instance_of(Anthropic::Client).to receive(:messages).with(
+            {
+              parameters: {
+                model: "claude-3-haiku-20240307",
+                messages: [{
+                  role: "user",
+                  content: client.send(:chat_prompt, :es, content)
+                }],
+                max_tokens: 4096
+              }
             }
-          }).and_call_original
+          ).and_call_original
 
           client.translate_content(:es, content)
         end
@@ -51,16 +53,18 @@ RSpec.describe I18nAi::Clients::AnthropicClient do
           content = file_fixture("en.yml").read
           client = I18nAi::Clients::AnthropicClient.new
 
-          allow_any_instance_of(Anthropic::Client).to receive(:messages).with({
-            parameters: {
-              model: "claude-3-haiku-20240307",
-              messages: [{
-                role: "user",
-                content: client.send(:chat_prompt, :es, content)
-              }],
-              max_tokens: 1000
+          allow_any_instance_of(Anthropic::Client).to receive(:messages).with(
+            {
+              parameters: {
+                model: "claude-3-haiku-20240307",
+                messages: [{
+                  role: "user",
+                  content: client.send(:chat_prompt, :es, content)
+                }],
+                max_tokens: 1000
+              }
             }
-          }).and_call_original
+          ).and_call_original
 
           client.translate_content(:es, content)
         end
