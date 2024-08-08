@@ -19,7 +19,7 @@ module I18nAi
           parameters: {
             model: config[:model],
             messages: [{ role: "user", content: chat_prompt(locale, text) }],
-            max_tokens: 4096
+            max_tokens: config[:max_tokens] || 4096
           }
         )
         parse_response(response)
