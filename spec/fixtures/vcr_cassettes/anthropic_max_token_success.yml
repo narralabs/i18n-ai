@@ -10,7 +10,7 @@ http_interactions:
         language code\nof es. Make sure to retain the keys in english except the first
         key which is the 2 letter language code:\n\n\"\"\"\"\nen:\n  good_morning:
         \"Good Morning\"\"\n\"\"\"\"\n\nReturn only the YAML content without explanation.\n\nExample
-        Return YAML:\n\n\"\"\"\n{{ISO_639 language code}}:\n  key_1: \"value1\"\n\"\"\"\n"}],"max_tokens":4096}'
+        Return YAML:\n\n\"\"\"\n{{ISO_639 language code}}:\n  key_1: \"value1\"\n\"\"\"\n"}],"max_tokens":1000}'
     headers:
       X-Api-Key:
       - "<ACCESS_TOKEN>"
@@ -30,7 +30,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 07 Aug 2024 10:20:15 GMT
+      - Thu, 08 Aug 2024 10:23:45 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -42,28 +42,30 @@ http_interactions:
       Anthropic-Ratelimit-Requests-Remaining:
       - '3999'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2024-08-07T10:20:56Z'
+      - '2024-08-08T10:23:56Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '400000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '400000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2024-08-07T10:20:15Z'
+      - '2024-08-08T10:23:45Z'
       Request-Id:
-      - req_01T8uPPQEP28FkgqjyYviNoU
+      - req_01FpY6SYPufa1MZjw3uVhnuB
       X-Cloud-Trace-Context:
-      - 4dacf66e23b5aba200d051e4b3e976c7
+      - 175a9a8a28792c0995180da93b7e4452
       Via:
       - 1.1 google
       Cf-Cache-Status:
       - DYNAMIC
+      X-Robots-Tag:
+      - none
       Server:
       - cloudflare
       Cf-Ray:
-      - 8af68870cbb6e540-MNL
+      - 8afecaf21c8ae548-MNL
     body:
       encoding: UTF-8
-      string: '{"id":"msg_01UfBgSiBN1cxEkN9NiSVw6C","type":"message","role":"assistant","model":"claude-3-haiku-20240307","content":[{"type":"text","text":"es:\n  good_morning:
-        \"Buenos días\""}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":111,"output_tokens":15}}'
-  recorded_at: Wed, 07 Aug 2024 10:20:15 GMT
+      string: '{"id":"msg_011DjbAD1GvkWkH1yWdviebv","type":"message","role":"assistant","model":"claude-3-haiku-20240307","content":[{"type":"text","text":"```yaml\nes:\n  good_morning:
+        \"Buenos días\"\n```"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":111,"output_tokens":20}}'
+  recorded_at: Thu, 08 Aug 2024 10:23:45 GMT
 recorded_with: VCR 6.2.0

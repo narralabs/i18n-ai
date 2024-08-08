@@ -10,7 +10,7 @@ http_interactions:
         language code\nof es. Make sure to retain the keys in english except the first
         key which is the 2 letter language code:\n\n\"\"\"\"\nen:\n  good_morning:
         \"Good Morning\"\"\n\"\"\"\"\n\nReturn only the YAML content without explanation.\n\nExample
-        Return YAML:\n\n\"\"\"\n{{ISO_639 language code}}:\n  key_1: \"value1\"\n\"\"\"\n"}],"max_tokens":4096}'
+        Return YAML:\n\n\"\"\"\n{{ISO_639 language code}}:\n  key_1: \"value1\"\n\"\"\"\n"}],"max_tokens":1000}'
     headers:
       Content-Type:
       - application/json
@@ -28,7 +28,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 08 Aug 2024 10:05:30 GMT
+      - Thu, 08 Aug 2024 10:07:32 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -38,7 +38,7 @@ http_interactions:
       Openai-Organization:
       - narra-labs
       Openai-Processing-Ms:
-      - '533'
+      - '248'
       Openai-Version:
       - '2020-10-01'
       Strict-Transport-Security:
@@ -50,36 +50,36 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '9999'
       X-Ratelimit-Remaining-Tokens:
-      - '195808'
+      - '198903'
       X-Ratelimit-Reset-Requests:
       - 8.64s
       X-Ratelimit-Reset-Tokens:
-      - 1.257s
+      - 328ms
       X-Request-Id:
-      - req_34b6348ed096a204bd71c00eefe807fa
+      - req_df3a1e7b906244860175461759e440eb
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=dV9wo8Z80FCpYFBYQLzTbuw7.6Vba5XFrVWqRVsp1ng-1723111530-1.0.1.1-Fm8YxMb1nONJG.ODfKx04rW4kwBrTU9wsRgbmLCKuXhS0gHjIyXRzqrVM41n02qstMLZTINrpQxqnp9DrZWfgA;
-        path=/; expires=Thu, 08-Aug-24 10:35:30 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=gfJjYt6DFpKjY3bNB5NYN.TyP.a.50QqSJoH4zGupBs-1723111652-1.0.1.1-BAug3hfLtuByU0Q5EXXe3Dz.ekYuqK8nlWrTVEfmj5qsk76Ld.qgpxtFdqMbJlIcMjh9kKXOsS5PD5AepYzqTQ;
+        path=/; expires=Thu, 08-Aug-24 10:37:32 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=Kbh4hGD10ci67q3GRBWG0bw4lLzRr_q_8UJflCNm0uk-1723111530616-0.0.1.1-604800000;
+      - _cfuvid=YmSIeZXaoIUq26nmkV.Qj.vK2hE7DJRnAPPLXbCQnRE-1723111652682-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8afeb03408d004e5-HKG
+      - 8afeb3318c725de2-HKG
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: UTF-8
       string: |
         {
-          "id": "chatcmpl-9tuJOu44KSKuGKHa8AWzb3KGikGMn",
+          "id": "chatcmpl-9tuLMQ7bOjMkqgiy8aBb739UOuMfe",
           "object": "chat.completion",
-          "created": 1723111530,
+          "created": 1723111652,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
@@ -100,5 +100,5 @@ http_interactions:
           },
           "system_fingerprint": "fp_48196bc67a"
         }
-  recorded_at: Thu, 08 Aug 2024 10:05:30 GMT
+  recorded_at: Thu, 08 Aug 2024 10:07:32 GMT
 recorded_with: VCR 6.2.0
