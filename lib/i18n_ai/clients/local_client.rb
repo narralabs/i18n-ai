@@ -36,6 +36,10 @@ module I18nAi
 
       private
 
+      def extract_translated_content(response)
+        response
+      end
+
       def parse_response(response)
         response.dig("response")
       rescue TypeError, NoMethodError => e
