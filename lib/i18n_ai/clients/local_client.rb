@@ -63,9 +63,6 @@ module I18nAi
       end
 
       def parse_response(response)
-        puts "*" * 80
-        puts response
-
         json = JSON.parse(response)
         json.dig("response")
       rescue TypeError, NoMethodError => e
