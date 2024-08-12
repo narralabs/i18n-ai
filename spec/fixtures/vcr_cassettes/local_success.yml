@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:11434/api/generate
+    body:
+      encoding: UTF-8
+      string: '{"model":"mistral","prompt":"Title: Translate the YAML Text from ISO
+        639 language code en to es.\n\nStep 1. Translate the first key (2-letter language
+        code) from en to es, keeping the rest of the keys unchanged.\nStep 2. Translate
+        all the values from en to es locale.\n\nText to translate:\n\"\"\"\nen:\n  good_morning:
+        \"Good Morning\"\n\"\"\"\n\nReturn only the valid translated YAML with proper
+        formatting with no explanation.","stream":false}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:11434
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 12 Aug 2024 14:40:40 GMT
+      Content-Length:
+      - '1032'
+    body:
+      encoding: UTF-8
+      string: '{"model":"mistral","created_at":"2024-08-12T14:40:40.927107Z","response":"
+        ```es:\n  good_morning: \"Buenos Días\"\n  ```","done":true,"done_reason":"stop","context":[3,29473,14391,29515,5103,10788,1040,1395,3622,29526,8147,1245,23820,29473,29552,29538,29542,4610,3464,1249,1066,1805,29491,781,781,10745,29473,29508,29491,5103,10788,1040,1675,2713,1093,29518,29501,16635,4610,3464,29499,1245,1249,1066,1805,29493,8371,1040,2614,1070,1040,8916,1289,12015,29491,781,10745,29473,29518,29491,5103,10788,1312,1040,3837,1245,1249,1066,1805,17818,29491,781,781,2642,1066,18592,29515,781,19320,781,1037,29515,781,29473,1947,29498,22389,1739,29515,1113,11372,26637,29507,781,19320,781,781,6936,1633,1040,4484,19772,1395,3622,29526,1163,5747,1989,15526,1163,1476,14036,29491,4,1027,9557,1042,29515,781,29473,1947,29498,22389,1739,29515,1113,29528,9024,1153,1152,13465,29507,781,29473,9557],"total_duration":548535500,"load_duration":14814417,"prompt_eval_count":116,"prompt_eval_duration":150036000,"eval_count":21,"eval_duration":382330000}'
+  recorded_at: Mon, 12 Aug 2024 14:40:40 GMT
+recorded_with: VCR 6.2.0

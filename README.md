@@ -53,6 +53,26 @@ I18nAi.configure do |config|
 end
 ```
 
+### Local
+
+You can also use local AI models that use the OpenAI API. Also make sure to use the completions API endpoint as the url vs the chat API endpoint.
+
+Tested locally with ollama with mistral and llama3.
+
+To configure and enable other locales, create a file `config/initializers/i18n_ai.rb`
+and add the following:
+
+```
+I18nAi.configure do |config|
+  config.ai_settings = {
+    provider: "local",
+    model: "mistral",
+    url: "http://localhost:11434/api/generate"
+  }
+  config.generate_locales = [:es]
+end
+```
+
 ## Usage
 
 Every page reload, the gem will check if the `en.yml` file changed and if it did, it will automatically generate the configured locale files.
