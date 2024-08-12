@@ -29,3 +29,6 @@ Style/Documentation:
 Style/BlockDelimiters:
   Exclude:
     - 'spec/**/*_spec.rb'
+
+Style/SingleArgumentDig:
+  Enabled: false

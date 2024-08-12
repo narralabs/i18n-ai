@@ -55,9 +55,12 @@ end
 
 ### Local
 
-If you prefer to use local AI models.
+You can also use local AI models that use the OpenAI API. Also make sure to use the completions API endpoint as the url vs the chat API endpoint.
 
-To configure and enable other locales, create a file `config/initializers/i18n_ai.rb` and add the following:
+Tested locally with ollama with mistral and llama3.
+
+To configure and enable other locales, create a file `config/initializers/i18n_ai.rb`
+and add the following:
 
 ```
 I18nAi.configure do |config|

@@ -68,6 +68,7 @@ module I18nAi
         puts "en.yml file not found"
       end
 
+      # rubocop:disable Metrics/MethodLength
       def configure_client
         config = I18nAi.configuration.ai_settings
         case config[:provider]
@@ -81,6 +82,7 @@ module I18nAi
           raise "Unknown AI provider: #{config[:provider]}"
         end
       end
+      # rubocop:enable Metrics/MethodLength
 
       def generate_translations(locales_file)
         locales = load_locales(locales_file)
