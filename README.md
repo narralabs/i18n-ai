@@ -22,7 +22,7 @@ To use I18nAi, you need to set the appropriate environment variables based on th
 
 If you are using OpenAI, set `ENV["OPENAI_ACCESS_TOKEN"]`
 
-To configure and enable other locales, create a file `config/initializers/i18n_aii.rb` and add the following:
+To configure and enable other locales, create a file `config/initializers/i18n_ai.rb` and add the following:
 
 ```
 # config/initializers/i18n_ai.rb

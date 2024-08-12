@@ -12,6 +12,8 @@ module I18nAi
   class Railtie < Rails::Railtie
     # Initialize the I18nAi middleware
     class I18nAiMiddleware
+      attr_reader :client
+
       def initialize(app)
         @app = app
         @client = configure_client
@@ -86,30 +88,13 @@ module I18nAi
         generate_locales = I18nAi.configuration.generate_locales
 
         generate_locales.each do |locale|
-          response = translate_locales(locale, text_to_translate)
-          next unless response
-
-          translated_content = extract_translated_content(response)
+          translated_content = client.translate_content(locale, text_to_translate)
           save_translated_locales(locale, translated_content) if translated_content
         end
       end
 
       def load_locales(locales_file)
         YAML.load_file(locales_file)
-      end
-
-      def translate_locales(locale, text_to_translate)
-        @client.chat(locale, text_to_translate)
-      end
-
-      def extract_translated_content(response)
-        config = I18nAi.configuration.ai_settings
-        if config[:provider] == 'local'
-          match_data = response
-        else
-          match_data = response.match(/```yaml(.*?)```/m)
-          match_data  ? match_data[1].strip : nil
-        end
       end
 
       def save_translated_locales(locale, translated_content)

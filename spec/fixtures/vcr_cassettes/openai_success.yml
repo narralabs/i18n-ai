@@ -1,0 +1,104 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"Translate
+        the following YAML content to the language of the country using the ISO 639
+        language code\nof es. Make sure to retain the keys in english except the first
+        key which is the 2 letter language code:\n\n\"\"\"\"\nen:\n  good_morning:
+        \"Good Morning\"\"\n\"\"\"\"\n\nReturn only the YAML content without explanation.\n\nExample
+        Return YAML:\n\n\"\"\"\n{{ISO_639 language code}}:\n  key_1: \"value1\"\n\"\"\"\n"}],"max_tokens":5000}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 07 Aug 2024 10:20:17 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Openai-Organization:
+      - narra-labs
+      Openai-Processing-Ms:
+      - '1326'
+      Openai-Version:
+      - '2020-10-01'
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      X-Ratelimit-Limit-Requests:
+      - '10000'
+      X-Ratelimit-Limit-Tokens:
+      - '200000'
+      X-Ratelimit-Remaining-Requests:
+      - '9999'
+      X-Ratelimit-Remaining-Tokens:
+      - '194903'
+      X-Ratelimit-Reset-Requests:
+      - 8.64s
+      X-Ratelimit-Reset-Tokens:
+      - 1.528s
+      X-Request-Id:
+      - req_60b52a993f7077f2ea0d922deb3abebd
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=27FTbZ_qhSLnp1zr.pm3prlBwbYtBZ1d1KsCf7Dj_bo-1723026017-1.0.1.1-ZAvJy34jqXVmkQ.SfesUHByg0z3TIW4dghv8na_0opjXCj5yrmPP7TbZVw4caFATdLPCAAT5WyXiqdwd9CzZcw;
+        path=/; expires=Wed, 07-Aug-24 10:50:17 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=4p58RyEmclVcRDxDTADsmYHU4L0wpZ77putvrBKtdFI-1723026017438-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8af68875be0585ce-HKG
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "id": "chatcmpl-9tY48QF4YliQG3W0U93gDtImBK5eu",
+          "object": "chat.completion",
+          "created": 1723026016,
+          "model": "gpt-4o-mini-2024-07-18",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "```yaml\nes:\n  good_morning: \"Buenos Días\"\n```",
+                "refusal": null
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 97,
+            "completion_tokens": 16,
+            "total_tokens": 113
+          },
+          "system_fingerprint": "fp_48196bc67a"
+        }
+  recorded_at: Wed, 07 Aug 2024 10:20:17 GMT
+recorded_with: VCR 6.2.0
