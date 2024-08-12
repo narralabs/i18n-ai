@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    i18n-ai (0.1.4)
+    i18n-ai (0.1.5)
       anthropic
       railties (>= 6.0.0, < 8)
       ruby-openai
