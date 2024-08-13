@@ -2,7 +2,7 @@
 
 i18n-ai is a gem that converts your rails locales into different languages automatically. Uses the `en.yml` file as base by default and creates accompanying `es.yml`, `it.yml` and others depending on your configuration.
 
-Currently uses OpenAI (`gpt4o-mini`) to generate the translations but support for other AI models and APIs will be added soon.
+Support for different AI services and models are available. You can use OpenAI, Anthropic Claude or even local services.
 
 ## Installation
 
@@ -18,7 +18,7 @@ And do `bundle install`.
 
 To use I18nAi, you need to set the appropriate environment variables based on the AI service you wish to use.
 
-### OpenAi
+### OpenAI
 
 If you are using OpenAI, set `ENV["OPENAI_ACCESS_TOKEN"]`
 
@@ -36,7 +36,7 @@ I18nAi.configure do |config|
 end
 ```
 
-### Anthropic's Claude
+### Anthropic Claude
 
 If you prefer to use Anthropic's Claude, set `ENV[ANTHROPIC_API_KEY]`
 
