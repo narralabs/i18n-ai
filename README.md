@@ -55,9 +55,7 @@ end
 
 ### Local
 
-You can also use local AI models that use the OpenAI API. Also make sure to use the completions API endpoint as the url vs the chat API endpoint.
-
-Tested locally with ollama with mistral and llama3.
+You can also use local AI models that use the OpenAI API. Tested locally with [ollama](https://ollama.com/) together with mistral and llama3 models.
 
 To configure and enable other locales, create a file `config/initializers/i18n_ai.rb`
 and add the following:
@@ -72,6 +70,9 @@ I18nAi.configure do |config|
   config.generate_locales = [:es]
 end
 ```
+
+> [!WARNING]
+> Make sure to use the [completions](https://github.com/ollama/ollama/blob/main/docs/api.md#generate-a-completion) vs [chat](https://github.com/ollama/ollama/blob/main/docs/api.md#generate-a-completion) API endpoint as the URL value.
 
 ## Usage
 
