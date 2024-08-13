@@ -70,17 +70,24 @@ module I18nAi
 
       # rubocop:disable Metrics/MethodLength
       def configure_client
-        config = I18nAi.configuration.ai_settings
-        case config[:provider]
-        when "anthropic"
-          I18nAi::Clients::AnthropicClient.new
-        when "openai"
-          I18nAi::Clients::OpenAiClient.new
-        when "local"
-          I18nAi::Clients::LocalClient.new
-        else
-          raise "Unknown AI provider: #{config[:provider]}"
+        # perform provider class lookup based on string supplied in the config.
+        provider_config = I18nAi.configuration.ai_settings[:provider]
+        class_name = [provider_config, 'client'].join('_').classify
+
+        begin
+          provider = I18nAi::Clients.const_get(class_name).new
+        rescue NameError => e
+          # Handle the case where the class name is invalid
+          puts "Error: The provider class '#{provider_config}' could not be found."
+          puts "Details: #{e.message}"
+          return nil
+        rescue StandardError => e
+          # Handle any other potential errors
+          puts "An unexpected error occurred: #{e.message}"
+          return nil
         end
+
+        provider
       end
       # rubocop:enable Metrics/MethodLength
 
